@@ -108,5 +108,24 @@ public class CategoryDAOImpl implements CategoryDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public static int getMaxCategoryCodelength() {
+		Connection con = DBConnect.getConnecttion();
+		String sql = "SELECT MAX(category.ma_the_loai) max_cat FROM category";
+		try {
+			PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery(sql);
+			String max=null;
+			while(rs.next()) {
+				max = rs.getInt("max_cat")+"";
+			}
+			con.close();
+			return max.length();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
 
 }

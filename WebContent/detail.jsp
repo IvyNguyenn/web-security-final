@@ -24,9 +24,10 @@
 	<%
 		// ham nay de lay ma san pham truyen qua tren thanh dia chj
 		String ma_san_pham = null;
-		if (request.getParameter("ma_san_pham") != null && request.getParameter("ma_san_pham").length()<50 
-				&& Util.checkStringOnlyNum(request.getParameter("ma_san_pham"))) {
-			ma_san_pham = request.getParameter("ma_san_pham");
+		String masanpham = Util.filterString(request.getParameter("ma_san_pham")+"");
+		if (masanpham != null && masanpham.length() <= ProductDAOImpl.getMaxProductCodelength()
+				&& Util.checkStringParam(masanpham)) {
+			ma_san_pham = masanpham;
 		}
 		System.out.println(ma_san_pham);
 		ProductDAOImpl productDAO = new ProductDAOImpl();

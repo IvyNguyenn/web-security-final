@@ -26,7 +26,7 @@
 	<pg:paging pageSize="4">
 		<div id="main">
 			<div id="head">
-				<img src="img/banner2.jpg" width="1057px" height="200px" />
+				<img src="img/banner2.jpg" width="1057px" height="300px" />
 			</div>
 			<%
 				String username = null;

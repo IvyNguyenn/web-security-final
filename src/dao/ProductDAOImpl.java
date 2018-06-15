@@ -158,7 +158,24 @@ public class ProductDAOImpl implements ProductDAO {
 			e.printStackTrace();
 		}
 		return list;
-		
+	}
 	
+	public static int getMaxProductCodelength() {
+		Connection con = DBConnect.getConnecttion();
+		String sql = "SELECT MAX(ma_san_pham) max_pro FROM product";
+		try {
+			PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery(sql);
+			String max=null;
+			while(rs.next()) {
+				max = rs.getInt("max_pro")+"";
+			}
+			con.close();
+			return max.length();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
 	}
 }

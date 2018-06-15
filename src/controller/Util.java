@@ -5,13 +5,14 @@ import java.util.regex.Pattern;
 
 public class Util {
 
-	public static String filter(String s) {
+	public static String filterString (String s) {
+		s = s.toLowerCase();
 		s = s.replaceAll("'", "");
 		s = s.replaceAll("-", "");
 		s = s.replaceAll("=", "");
 		s = s.replaceAll("#", "");
 		s = s.replaceAll("/", "");
-		// s = s.replaceAll("*", "");
+		s = s.replaceAll("%", "");
 
 		return s;
 	}
