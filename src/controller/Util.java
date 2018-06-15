@@ -15,7 +15,17 @@ public class Util {
 
 		return s;
 	}
-
+	
+	public static boolean checkStringOnlyNum(String s) {
+		int len = s.length();
+		for (int i = 0; i < len; i++) {
+			if (!(((s.charAt(i) <= '9' && s.charAt(i) >= '0')))) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	public static boolean checkStringParam2(String s) {
 		int len = s.length();
 		for (int i = 0; i < len; i++) {

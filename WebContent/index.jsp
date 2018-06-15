@@ -107,7 +107,7 @@
 					list = productDAO.getList();
 					String ma_the_loai = null;
 					if (request.getParameter("ma_the_loai") != null && request.getParameter("ma_the_loai").length()<100 
-							&& Util.checkStringParam2(request.getParameter("ma_the_loai"))) {
+							&& Util.checkStringOnlyNum(request.getParameter("ma_the_loai"))) {
 						ma_the_loai = request.getParameter("ma_the_loai");
 						System.out.println("ma the loai "+ma_the_loai);
 					}

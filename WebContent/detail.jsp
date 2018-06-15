@@ -25,7 +25,7 @@
 		// ham nay de lay ma san pham truyen qua tren thanh dia chj
 		String ma_san_pham = null;
 		if (request.getParameter("ma_san_pham") != null && request.getParameter("ma_san_pham").length()<50 
-				&& Util.checkStringParam2(request.getParameter("ma_san_pham"))) {
+				&& Util.checkStringOnlyNum(request.getParameter("ma_san_pham"))) {
 			ma_san_pham = request.getParameter("ma_san_pham");
 		}
 		System.out.println(ma_san_pham);
