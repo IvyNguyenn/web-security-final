@@ -13,7 +13,7 @@
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 
-	<security-constraint>
+ <security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Shoping</web-resource-name>
 			<url-pattern>/*</url-pattern>
@@ -22,8 +22,6 @@
 			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
 		</user-data-constraint>
 	</security-constraint>
-
-
 
 
 	<servlet>

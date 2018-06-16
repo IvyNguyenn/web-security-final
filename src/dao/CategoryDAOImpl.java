@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Category;
+import controller.HtmlEncoder;
 
 public class CategoryDAOImpl implements CategoryDAO {
 
@@ -38,8 +39,8 @@ public class CategoryDAOImpl implements CategoryDAO {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				int ma_the_loai = rs.getInt("ma_the_loai");
-				String ten_the_loai = rs.getString("ten_the_loai");
-				String mo_ta = rs.getString("mo_ta");
+				String ten_the_loai = HtmlEncoder.encode(rs.getString("ten_the_loai"));
+				String mo_ta 		= HtmlEncoder.encode(rs.getString("mo_ta"));
 				list.add(new Category(ma_the_loai, ten_the_loai, mo_ta));
 			}
 			con.close();
@@ -82,8 +83,8 @@ public class CategoryDAOImpl implements CategoryDAO {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				int ma_the_loai = rs.getInt("ma_the_loai");
-				String ten_the_loai = rs.getString("ten_the_loai");
-				String mo_ta = rs.getString("mo_ta");
+				String ten_the_loai = HtmlEncoder.encode(rs.getString("ten_the_loai"));
+				String mo_ta 		= HtmlEncoder.encode(rs.getString("mo_ta"));
 				c = new Category(ma_the_loai, ten_the_loai, mo_ta);
 			}
 			con.close();

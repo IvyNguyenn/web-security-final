@@ -93,7 +93,7 @@
 					if (request.getParameter("ten_the_loai") != null && request.getParameter("ten_san_pham") != null) {
 						ten_the_loai = request.getParameter("ten_the_loai");
 						ten_san_pham = request.getParameter("ten_san_pham");
-						
+
 						ten_san_pham = VNCharacterUtils.removeAccent(ten_san_pham);
 						ten_the_loai = VNCharacterUtils.removeAccent(ten_the_loai);
 					}
@@ -105,7 +105,10 @@
 					if (request.getAttribute("err") != null) {
 						err = (String) request.getAttribute("err");
 				%>
-				<h3><%=err%></h3>
+				<div class="alert alert-danger alert-dismissible">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<strong>Error!</strong> <%=err%>
+				</div>
 				<%
 					}
 				%>
@@ -113,8 +116,9 @@
 				<%
 					if (productDAO.searchList(ten_san_pham, ten_the_loai).size() == 0 && err == "") {
 				%>
-				<div class="alert alert-danger">
-					<strong>!</strong> Không tìm thấy sản phẩm nào phù hợp!
+				<div class="alert alert-danger alert-dismissible">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<strong>Error!</strong> Không tìm thấy sản phẩm nào phù hợp!
 				</div>
 				<%
 					}

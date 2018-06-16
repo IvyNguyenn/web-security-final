@@ -13,7 +13,9 @@ public class Util {
 		s = s.replaceAll("#", "");
 		s = s.replaceAll("/", "");
 		s = s.replaceAll("%", "");
-
+		s = s.replaceAll("%n", "");
+		s = s.replaceAll("%s", "");
+		
 		return s;
 	}
 	
@@ -40,7 +42,7 @@ public class Util {
 	public static boolean checkStringParam(String s) {
 		if (s == null || 
 				s.contains("'") || 
-				s.contains("''") || 
+				s.contains("\"") || 
 				s.contains("--") || 
 				s.contains("=") || 
 				s.contains("#")||

@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.owasp.webgoat.util.HtmlEncoder;
-
 
 /**
  * Servlet implementation class SearchServlet
@@ -44,16 +42,13 @@ public class SearchServlet extends HttpServlet {
 		String ten_san_pham= request.getParameter("ten_san_pham");
 		String ten_the_loai= request.getParameter("ten_the_loai");
 		
-		ten_san_pham = HtmlEncoder.encode(ten_san_pham);
-		ten_the_loai = HtmlEncoder.encode(ten_the_loai);	
-		
 		String err="";
 		
 		if(ten_san_pham.equals("") && ten_the_loai.equals("")){
 			err+="Phải nhập ít nhất một thông tin tìm kiếm";
 		}
-		if(!Util.checkStringParam(ten_san_pham) || !Util.checkStringParam(ten_the_loai) || ten_san_pham.length()<200 || ten_the_loai.length()<200){
-			err+="Tên sản phẩm hoặc tên thể loại không đúng";
+		if (!Util.checkStringParam(ten_san_pham) || !Util.checkStringParam(ten_the_loai) || ten_san_pham.length()>200 || ten_the_loai.length()>200) {
+			err+="Tên sản phẩm, tên thể loại không đúng";
 		}
 		if (err.length() > 0) {
 			request.setAttribute("err", err);

@@ -24,12 +24,13 @@
 	<%
 		// ham nay de lay ma san pham truyen qua tren thanh dia chj
 		String ma_san_pham = null;
-		String masanpham = Util.filterString(request.getParameter("ma_san_pham")+"");
-		if (masanpham != null && masanpham.length() <= ProductDAOImpl.getMaxProductCodelength()
-				&& Util.checkStringParam(masanpham)) {
+		String masanpham = Util.filterString(request.getParameter("ma_san_pham") + "");
+		if (masanpham != null && Util.checkStringOnlyNum(masanpham)
+				&& masanpham.length() <= ProductDAOImpl.getMaxProductCodelength()) {
 			ma_san_pham = masanpham;
 		}
-		System.out.println(ma_san_pham);
+		System.out.println("ma san pham: " + ma_san_pham);
+		System.out.println("max length ma san pham: " + ProductDAOImpl.getMaxProductCodelength());
 		ProductDAOImpl productDAO = new ProductDAOImpl();
 		NumberFormat nf = NumberFormat.getInstance();
 		nf.setMinimumFractionDigits(0);
@@ -45,7 +46,7 @@
 				for (Cookie cookie : cookies) {
 					if (cookie.getName().equals("username"))
 						username = cookie.getValue();
-						request.getSession().setAttribute("username", username);
+					request.getSession().setAttribute("username", username);
 				}
 			}
 
@@ -92,7 +93,9 @@
 			}
 		%>
 		<div id="content">
-
+			<%
+				if (ma_san_pham != null) {
+			%>
 			<div class="left-1">
 				<img
 					src="product/<%=productDAO.getProduct(Integer.parseInt(ma_san_pham)).getHinh_anh()%>"
@@ -144,8 +147,7 @@
 			%>
 			<div class="left-3">
 				<article> <input type="checkbox" id="read_more"
-					role="button">
-				<br>
+					role="button"> <br>
 				<label for="read_more" onclick=""
 					style="width: 770px; margin-left: 150px; margin-right: auto;"><span>Xem
 						thông tin chi tiết</span> <span>Đóng</span></label> <section>
@@ -162,7 +164,10 @@
 				<br>
 				</section> </article>
 			</div>
-
+			<%
+				}
+			%>
+			
 		</div>
 		<div id="footer"><jsp:include page="footer.jsp"></jsp:include></div>
 	</div>

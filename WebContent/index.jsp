@@ -107,12 +107,12 @@
 					List<Product> list = new ArrayList<Product>();
 					list = productDAO.getList();
 					String ma_the_loai = null;
-					if (request.getParameter("ma_the_loai") != null && request.getParameter("ma_the_loai").length()	 <= CategoryDAOImpl.getMaxCategoryCodelength()
-							&& Util.checkStringOnlyNum(request.getParameter("ma_the_loai"))) {
+					if (request.getParameter("ma_the_loai") != null && Util.checkStringOnlyNum(request.getParameter("ma_the_loai")) 
+							&& request.getParameter("ma_the_loai").length()	 <= CategoryDAOImpl.getMaxCategoryCodelength()) {
 						ma_the_loai = request.getParameter("ma_the_loai");
 						System.out.println("ma the loai "+ma_the_loai);
 					}
-					System.out.println("max cat: "+CategoryDAOImpl.getMaxCategoryCodelength());
+					System.out.println("max length ma the loai "+CategoryDAOImpl.getMaxCategoryCodelength());
 					NumberFormat nf = NumberFormat.getInstance();
 					nf.setMinimumFractionDigits(0);
 				%>
